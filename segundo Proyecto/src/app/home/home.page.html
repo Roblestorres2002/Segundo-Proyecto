@@ -1,0 +1,28 @@
+
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p >
+    ¡Bienvenido A tomorrowland con un poco de football ! 
+  </p>
+  <swiper-container
+  [pagination]="true"
+  [slidesPerView]="3"
+  >
+      <swiper-slide *ngFor="let slide of event_list">
+          <img src="{{slide.image}}">
+      </swiper-slide>
+    
+  </swiper-container>
+  <ion-button (click)="goToIntro()" class="intro-button">intro</ion-button>
+</ion-content>
+
+<p class="white-p">
+ Muchas gracias por la oportunidad profesora ,se lo agradezco
+</p>

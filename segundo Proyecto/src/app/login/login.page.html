@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-title class="custom-title">¡Bienvenido de nuevo!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-content">
+  <div class="custom-avatar">
+    <img src="https://static.vecteezy.com/system/resources/previews/005/005/840/non_2x/user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-illustration-eps10-free-vector.jpg" alt="logo" class="custom-logo">
+  </div>
+  
+  <form [formGroup]="loginform" (ngSubmit)="login(loginform.value)">
+    <ion-item class="custom-input">
+      <ion-input formControlName="email" placeholder="Correo Electrónico"></ion-input>
+    </ion-item>
+    <div *ngFor="let validation of validation_messages.email" class="custom-validation">
+      <div *ngIf="loginform.get('email')?.hasError(validation.type) && loginform.get('email')?.dirty">
+        {{ validation.message }}
+      </div>
+    </div>
+    <ion-item class="custom-input">
+      <ion-input formControlName="password" placeholder="Contraseña" type="password"></ion-input>
+    </ion-item>
+    <div *ngFor="let validation of validation_messages.password" class="custom-validation">
+      <div *ngIf="loginform.get('password')?.hasError(validation.type) && loginform.get('password')?.dirty">
+        {{ validation.message }}
+      </div>
+    </div>
+
+    <ion-button type="submit" [disabled]="!loginform.valid" expand="full" class="custom-button">Iniciar Sesión</ion-button>
+  </form>
+
+  <div class="custom-validation-message">       
+    {{loginMessage}}
+  </div>
+
+  <ion-text class="ion-text-center custom-text">
+    <ion-label>
+      ¿Aún no tienes cuenta? <ion-router-link routerLink="/register" class="custom-link">¡Regístrate aquí!</ion-router-link>
+    </ion-label>
+  </ion-text>
+</ion-content>
